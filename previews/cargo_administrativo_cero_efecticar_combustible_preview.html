@@ -1,0 +1,977 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cargo Administrativo Cero Efecticar Combustible</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* Variables CSS */
+        :root {
+            --primary-color: #be0f34; /* Rojo de Efectivale */
+            --primary-color-dark: #a30d2d; /* Rojo ligeramente más oscuro para hover */
+            --secondary-color: #6d6e65; /* Gris de Efectivale */
+            --text-color: #333; /* Texto principal oscuro */
+            --light-gray: #f7f7f7; /* Fondo de secciones claras */
+            --dark-gray: #4a4a4a; /* Texto y fondo de secciones oscuras */
+            --white: #ffffff; /* Blanco */
+            --shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            --border-radius: 8px;
+
+            --font-heading: 'Montserrat', sans-serif;
+            --font-body: 'Roboto', sans-serif;
+        }
+
+        /* Reset y estilos base */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--white);
+            overflow-x: hidden; /* Previene scroll horizontal */
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-heading);
+            color: var(--dark-gray);
+            margin-bottom: 0.8em;
+            line-height: 1.2;
+        }
+
+        h1 { font-size: 3.5em; font-weight: 800; }
+        h2 { font-size: 2.5em; font-weight: 700; }
+        h3 { font-size: 1.8em; font-weight: 600; }
+
+        p {
+            margin-bottom: 1em;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary-color);
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--primary-color-dark);
+        }
+
+        /* Botones */
+        .btn {
+            display: inline-block;
+            padding: 14px 28px;
+            border-radius: 50px;
+            font-family: var(--font-heading);
+            font-weight: 600;
+            font-size: 1em;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: var(--white);
+            border-color: var(--primary-color);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-color-dark);
+            border-color: var(--primary-color-dark);
+            box-shadow: 0 8px 20px rgba(190, 15, 52, 0.3); /* Usar RGB directo para sombra */
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--dark-gray);
+            border-color: var(--dark-gray);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--dark-gray);
+            color: var(--white);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .btn-large {
+            padding: 18px 36px;
+            font-size: 1.1em;
+        }
+
+        /* Header y Navbar */
+        .main-header {
+            background-color: rgba(0, 0, 0, 0.8); /* Fondo oscuro semitransparente */
+            backdrop-filter: blur(10px); /* Efecto de desenfoque */
+            -webkit-backdrop-filter: blur(10px); /* Para compatibilidad Safari */
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .navbar .logo img {
+            height: 40px;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            font-weight: 600;
+            position: relative;
+            padding-bottom: 5px;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--primary-color);
+            left: 0;
+            bottom: 0;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links .btn {
+            padding: 10px 20px;
+            font-size: 0.9em;
+            margin-left: 10px; /* Espacio extra para el botón */
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.8em;
+            color: var(--white);
+            cursor: pointer;
+        }
+
+        /* Sección Hero */
+        .hero-section {
+            background-image: url("https://image.pollinations.ai/prompt/abstract-futuristic-gasolina-background-corporate-style?v=1"); /* IA DECORATIVA */
+            background-size: cover;
+            background-position: center;
+            padding: 100px 20px;
+            display: flex;
+            flex-wrap: wrap; /* Permite que los elementos se envuelvan */
+            justify-content: center;
+            align-items: center;
+            min-height: 85vh; /* Altura mínima para que se vea bien */
+            color: var(--white);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Overlay para legibilidad del texto */
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8));
+            z-index: 1;
+        }
+
+        .hero-content, .hero-image {
+            position: relative;
+            z-index: 2;
+            flex: 1;
+            min-width: 300px;
+            max-width: 600px;
+            padding: 20px;
+            text-align: left;
+        }
+
+        .hero-content {
+            animation: fadeInLeft 1s ease-out forwards;
+        }
+
+        .hero-image {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: fadeInRight 1s ease-out forwards;
+        }
+
+        .hero-title {
+            font-size: 4em;
+            color: var(--white);
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+        }
+
+        .hero-message {
+            font-size: 1.4em;
+            margin-bottom: 30px;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .highlight-text {
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+
+        .promo-details {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 30px;
+            justify-content: flex-start;
+        }
+
+        .fuel-icon {
+            width: 60px;
+            height: auto;
+        }
+
+        .promo-duration {
+            font-size: 1.6em;
+            font-weight: 600;
+            color: var(--white);
+        }
+
+        .duration-highlight {
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+        }
+
+        .product-card-hero { /* IMAGEN REAL: PRODUCTO_TARJETA fusionada con fondo IA */
+            max-width: 450px;
+            width: 100%;
+            height: auto;
+            filter: drop-shadow(0 15px 30px rgba(0,0,0,0.4));
+            transform: rotateZ(10deg);
+            transition: transform 0.5s ease;
+        }
+
+        .product-card-hero:hover {
+            transform: rotateZ(0deg) scale(1.05);
+        }
+
+        /* Sección de Beneficios */
+        .benefits-section {
+            padding: 80px 20px;
+            background-color: var(--light-gray);
+            text-align: center;
+        }
+
+        .benefits-section h2 {
+            color: var(--primary-color);
+            margin-bottom: 60px;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .benefit-item {
+            background-color: var(--white);
+            padding: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .benefit-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Iconos Placeholder (se podrían reemplazar con Font Awesome o SVGs) */
+        .benefit-item i {
+            font-size: 3em;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            display: block;
+        }
+        .icon-dollar::before { content: '💰'; }
+        .icon-chart::before { content: '📊'; }
+        .icon-security::before { content: '🔒'; }
+        .icon-fuel::before { content: '⛽'; }
+
+        .benefit-item h3 {
+            color: var(--dark-gray);
+            margin-bottom: 15px;
+        }
+
+        .benefit-item p {
+            color: var(--secondary-color);
+        }
+
+        .product-showcase {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin-top: 50px;
+        }
+
+        .product-card-physical, .product-card-ecard { /* IMÁGENES REALES: PRODUCTO_TARJETA y PRODUCTO_ECARD */
+            max-width: 350px;
+            width: 100%;
+            height: auto;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            transition: transform 0.4s ease, filter 0.4s ease;
+        }
+
+        .product-card-physical {
+            transform: rotateZ(-5deg);
+        }
+        .product-card-ecard {
+            transform: rotateZ(5deg);
+        }
+
+        .product-card-physical:hover {
+            transform: rotateZ(0deg) scale(1.03);
+            filter: brightness(1.1);
+        }
+        .product-card-ecard:hover {
+            transform: rotateZ(0deg) scale(1.03);
+            filter: brightness(1.1);
+        }
+
+        /* Sección Cómo Funciona */
+        .how-it-works-section {
+            background-image: url("https://image.pollinations.ai/prompt/abstract-futuristic-gasolina-background-corporate-style?v=2"); /* Otra IA DECORATIVA */
+            background-size: cover;
+            background-position: center;
+            padding: 100px 20px;
+            text-align: center;
+            color: var(--white);
+            position: relative;
+        }
+
+        .how-it-works-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 1;
+        }
+
+        .how-it-works-section > .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .how-it-works-section h2 {
+            color: var(--primary-color);
+            margin-bottom: 60px;
+        }
+
+        .steps-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .step-item {
+            background-color: rgba(255, 255, 255, 0.1); /* Fondo semitransparente */
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 30px;
+            border-radius: var(--border-radius);
+            flex: 1;
+            max-width: 350px;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        .step-item:hover {
+            transform: translateY(-10px);
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .step-number {
+            font-size: 3em;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            border: 3px solid var(--primary-color);
+            border-radius: 50%;
+            width: 80px;
+            height: 80px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto 20px auto;
+            transition: all 0.3s ease;
+        }
+        .step-item:hover .step-number {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+
+        .step-item h3 {
+            color: var(--white);
+            margin-bottom: 15px;
+        }
+
+        .step-item p {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        /* Sección Testimonios */
+        .testimonials-section {
+            padding: 80px 20px;
+            background-color: var(--light-gray);
+            text-align: center;
+        }
+
+        .testimonials-section h2 {
+            color: var(--dark-gray);
+            margin-bottom: 60px;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .testimonial-card {
+            background-color: var(--white);
+            padding: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .testimonial-avatar { /* IA TESTIMONIOS */
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 20px;
+            border: 3px solid var(--primary-color);
+            box-shadow: 0 4px 10px rgba(190, 15, 52, 0.3);
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--dark-gray);
+        }
+
+        /* Sección de Contacto */
+        .contact-section {
+            background-color: var(--dark-gray);
+            padding: 80px 20px;
+            text-align: center;
+            color: var(--white);
+        }
+
+        .contact-section h2 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .contact-subtitle {
+            font-size: 1.2em;
+            margin-bottom: 40px;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 40px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--white);
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group input[type="tel"],
+        .form-group textarea {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 5px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--white);
+            font-size: 1em;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: var(--primary-color);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(190, 15, 52, 0.2);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        /* Footer */
+        .main-footer {
+            background-color: var(--dark-gray);
+            color: var(--white);
+            padding: 40px 20px;
+            text-align: center;
+            border-top: 5px solid var(--primary-color);
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .footer-logo { /* IMAGEN REAL: LOGO_BLANCO */
+            height: 50px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .social-links a {
+            color: var(--white);
+            font-size: 1.5em;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Iconos sociales Placeholder (usar Font Awesome para proyecto real) */
+        .icon-facebook::before { content: '📘'; }
+        .icon-twitter::before { content: '🐦'; }
+        .icon-linkedin::before { content: '👔'; }
+
+        /* Animaciones Keyframe */
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* Diseño Responsivo */
+        @media (max-width: 992px) {
+            h1 { font-size: 3em; }
+            h2 { font-size: 2em; }
+            .hero-section {
+                flex-direction: column;
+                text-align: center;
+                padding: 80px 20px;
+            }
+            .hero-content {
+                order: 2; /* Contenido debajo de la imagen en móvil */
+                text-align: center;
+                max-width: 100%;
+            }
+            .hero-image {
+                order: 1;
+                margin-bottom: 40px;
+            }
+            .promo-details, .hero-actions {
+                justify-content: center;
+            }
+            .product-card-hero {
+                transform: none; /* Quitar rotación inicial para móvil */
+                max-width: 300px;
+            }
+            .product-card-hero:hover {
+                transform: scale(1.05);
+            }
+
+            /* Menú de navegación responsive */
+            .navbar .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: rgba(0, 0, 0, 0.95);
+                padding: 20px 0;
+                border-top: 1px solid rgba(255, 255, 255, 0.1);
+                box-shadow: var(--shadow);
+            }
+            .navbar .nav-links.active {
+                display: flex;
+            }
+            .navbar .nav-links li {
+                margin: 10px 0;
+                text-align: center;
+            }
+            .navbar .nav-links a {
+                padding: 10px 0;
+                display: block;
+            }
+            .navbar .menu-toggle {
+                display: block;
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5em; }
+            h2 { font-size: 1.8em; }
+            h3 { font-size: 1.5em; }
+
+            .hero-section {
+                padding: 60px 20px;
+            }
+            .hero-title {
+                font-size: 2.8em;
+            }
+            .hero-message {
+                font-size: 1.1em;
+            }
+            .promo-duration {
+                font-size: 1.4em;
+            }
+            .fuel-icon {
+                width: 50px;
+            }
+
+            .btn {
+                padding: 12px 24px;
+                font-size: 0.9em;
+            }
+            .btn-large {
+                padding: 14px 28px;
+                font-size: 1em;
+            }
+
+            .benefits-grid, .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+            .product-showcase {
+                flex-direction: column;
+                gap: 20px;
+            }
+            .product-card-physical, .product-card-ecard {
+                transform: none !important; /* Anular rotaciones en pantallas pequeñas */
+            }
+            .step-item {
+                max-width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .navbar .logo img {
+                height: 35px;
+            }
+            .hero-title {
+                font-size: 2em;
+            }
+            .hero-message {
+                font-size: 1em;
+            }
+            .hero-actions {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .btn-large {
+                width: 100%;
+            }
+            .promo-details {
+                flex-direction: column;
+                gap: 10px;
+            }
+            .promo-duration {
+                text-align: center;
+            }
+            .contact-form {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="main-header">
+        <nav class="navbar">
+            <a href="#" class="logo">
+                <img src="/resources/logos/logo efectivale blanco.svg" alt="Efectivale Logo Blanco">
+            </a>
+            <ul class="nav-links">
+                <li><a href="#hero">Inicio</a></li>
+                <li><a href="#beneficios">Beneficios</a></li>
+                <li><a href="#como-funciona">Cómo Funciona</a></li>
+                <li><a href="#testimonios">Testimonios</a></li>
+                <li><a href="#contacto" class="btn btn-primary">¡Solicitar Ahora!</a></li>
+            </ul>
+            <button class="menu-toggle" aria-label="Toggle navigation">☰</button>
+        </nav>
+    </header>
+
+    <main>
+        <section id="hero" class="hero-section">
+            <div class="hero-content">
+                <h1 class="hero-title">Cargo Administrativo Cero con <span class="highlight-text">Efecticar Combustible</span></h1>
+                <p class="hero-message">¡Aprovecha esta increíble promoción! Olvídate de los cargos administrativos y maximiza el rendimiento de tu flotilla.</p>
+                <div class="promo-details">
+                    <img src="/resources/gasolina/ICONO FUEL.svg" alt="Icono de Gasolina" class="fuel-icon">
+                    <p class="promo-duration">Válido por <span class="duration-highlight">30 días</span></p>
+                </div>
+                <div class="hero-actions">
+                    <a href="#contacto" class="btn btn-primary btn-large">¡Quiero Mi Cargo Cero!</a>
+                    <a href="#beneficios" class="btn btn-secondary btn-large">Más Información</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="/resources/gasolina/01-EFC-COMBUSTIBLE.webp" alt="Tarjeta Efecticar Combustible" class="product-card-hero">
+            </div>
+        </section>
+
+        <section id="beneficios" class="benefits-section">
+            <div class="container">
+                <h2>Beneficios de Efecticar Combustible</h2>
+                <div class="benefits-grid">
+                    <div class="benefit-item">
+                        <i class="icon-dollar"></i>
+                        <h3>Ahorro Garantizado</h3>
+                        <p>Elimina los cargos administrativos y reduce significativamente tus costos operativos.</p>
+                    </div>
+                    <div class="benefit-item">
+                        <i class="icon-chart"></i>
+                        <h3>Control Total</h3>
+                        <p>Gestiona y monitorea el consumo de combustible de forma eficiente y transparente.</p>
+                    </div>
+                    <div class="benefit-item">
+                        <i class="icon-security"></i>
+                        <h3>Seguridad Mejorada</h3>
+                        <p>Protege tus recursos con tarjetas seguras y personalizadas para cada vehículo o empleado.</p>
+                    </div>
+                    <div class="benefit-item">
+                        <i class="icon-fuel"></i>
+                        <h3>Amplia Aceptación</h3>
+                        <p>Utiliza Efecticar Combustible en una vasta red de estaciones de servicio a nivel nacional.</p>
+                    </div>
+                </div>
+                <div class="product-showcase">
+                    <img src="/resources/gasolina/01-EFC-COMBUSTIBLE.webp" alt="Tarjeta Física Efecticar Combustible" class="product-card-physical">
+                    <img src="/resources/gasolina/03-efc-comb-ecard.webp" alt="Efecticar Combustible eCard" class="product-card-ecard">
+                </div>
+            </div>
+        </section>
+
+        <section id="como-funciona" class="how-it-works-section">
+            <div class="container">
+                <h2>¿Cómo Obtener Tu Cargo Cero?</h2>
+                <div class="steps-grid">
+                    <div class="step-item">
+                        <div class="step-number">1</div>
+                        <h3>Contáctanos</h3>
+                        <p>Completa el formulario y uno de nuestros asesores especializados se pondrá en contacto contigo para entender tus necesidades.</p>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-number">2</div>
+                        <h3>Personaliza tu Solución</h3>
+                        <p>Diseñaremos un plan a medida para las necesidades específicas de tu empresa y flotilla, garantizando el máximo ahorro.</p>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-number">3</div>
+                        <h3>¡Ahorra Desde Hoy!</h3>
+                        <p>Recibe tus tarjetas Efecticar Combustible y empieza a disfrutar del beneficio de cargo administrativo cero inmediatamente.</p>
+                    </div>
+                </div>
+                <a href="#contacto" class="btn btn-primary btn-large">¡Empezar Ahora!</a>
+            </div>
+        </section>
+
+        <section id="testimonios" class="testimonials-section">
+            <div class="container">
+                <h2>Lo que Dicen Nuestros Clientes</h2>
+                <div class="testimonials-grid">
+                    <div class="testimonial-card">
+                        <img src="https://i.pravatar.cc/150?u=user1" alt="Foto de perfil de cliente 1" class="testimonial-avatar">
+                        <p class="testimonial-text">"Desde que usamos Efecticar Combustible, la gestión de nuestra flotilla es mucho más sencilla y hemos notado un ahorro real. ¡La promoción de cargo cero es un plus increíble!"</p>
+                        <p class="testimonial-author">- Ana Martínez, Gerente de Logística</p>
+                    </div>
+                    <div class="testimonial-card">
+                        <img src="https://i.pravatar.cc/150?u=user2" alt="Foto de perfil de cliente 2" class="testimonial-avatar">
+                        <p class="testimonial-text">"El soporte al cliente es excelente y las tarjetas son muy prácticas. Con el cargo administrativo cero, nuestro presupuesto rinde mucho más. ¡Totalmente recomendado!"</p>
+                        <p class="testimonial-author">- Ricardo Solís, Dueño de Transporte</p>
+                    </div>
+                    <div class="testimonial-card">
+                        <img src="https://i.pravatar.cc/150?u=user3" alt="Foto de perfil de cliente 3" class="testimonial-avatar">
+                        <p class="testimonial-text">"La implementación fue rápida y sin complicaciones. Hemos optimizado nuestros gastos de combustible y la oferta de cargo administrativo cero fue la cereza del pastel."</p>
+                        <p class="testimonial-author">- Laura Pérez, Directora Administrativa</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contacto" class="contact-section">
+            <div class="container">
+                <h2>¡No Dejes Pasar Esta Oportunidad!</h2>
+                <p class="contact-subtitle">Rellena el formulario y obtén tu cargo administrativo cero hoy mismo. ¡Solo por 30 días!</p>
+                <form class="contact-form">
+                    <div class="form-group">
+                        <label for="nombre">Nombre Completo</label>
+                        <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="empresa">Empresa</label>
+                        <input type="text" id="empresa" name="empresa" placeholder="Nombre de tu empresa" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Correo Electrónico</label>
+                        <input type="email" id="email" name="email" placeholder="tu.correo@ejemplo.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="telefono">Número de Teléfono</label>
+                        <input type="tel" id="telefono" name="telefono" placeholder="Ej: 55 1234 5678" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="mensaje">Mensaje (Opcional)</label>
+                        <textarea id="mensaje" name="mensaje" rows="4" placeholder="¿Cómo podemos ayudarte?"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-large">Enviar Solicitud</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <img src="/resources/logos/logo efectivale blanco.svg" alt="Efectivale Logo Blanco" class="footer-logo">
+                <p>&copy; 2023 Efectivale. Todos los derechos reservados.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook"><i class="icon-facebook"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="icon-twitter"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="icon-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navLinks = document.querySelector('.nav-links');
+
+            menuToggle.addEventListener('click', function() {
+                navLinks.classList.toggle('active');
+            });
+
+            // Cierra el menú cuando se hace clic en un enlace de navegación
+            navLinks.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navLinks.classList.remove('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>

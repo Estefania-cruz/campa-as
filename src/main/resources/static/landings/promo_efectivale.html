@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promo Efectivale - 20% Descuento</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        /* Reset y estilos base */
+        :root {
+            --primary-color: #007bff; /* Azul vibrante */
+            --secondary-color: #6c757d; /* Gris secundario */
+            --accent-color: #28a745; /* Verde para éxito/CTA */
+            --light-bg: #f8f9fa; /* Fondo claro */
+            --dark-text: #343a40; /* Texto oscuro */
+            --white-text: #ffffff; /* Texto blanco */
+            --border-color: #dee2e6;
+            --shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            line-height: 1.6;
+            color: var(--dark-text);
+            background-color: var(--light-bg);
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Montserrat', sans-serif;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        h1 { font-size: 3rem; }
+        h2 { font-size: 2.5rem; }
+        h3 { font-size: 1.75rem; }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary-color);
+        }
+
+        .button {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: var(--white-text);
+            padding: 15px 30px;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .button:hover {
+            background-color: #218838; /* Un poco más oscuro */
+            transform: translateY(-2px);
+        }
+
+        .button.large {
+            font-size: 1.3rem;
+            padding: 20px 40px;
+        }
+
+        /* Sección Hero */
+        #hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://source.unsplash.com/1600x900/?discount,voucher') no-repeat center center/cover;
+            color: var(--white-text);
+            text-align: center;
+            padding: 100px 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 70vh; /* Altura mínima para que ocupe buena parte de la pantalla */
+        }
+
+        #hero h1 {
+            font-size: 4rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        #hero h2 {
+            font-size: 3rem;
+            margin-bottom: 30px;
+            color: var(--accent-color);
+            font-weight: 600;
+        }
+
+        #hero p {
+            font-size: 1.3rem;
+            margin-bottom: 40px;
+            max-width: 800px;
+        }
+
+        .countdown-timer {
+            background-color: rgba(255, 255, 255, 0.15);
+            padding: 15px 30px;
+            border-radius: 8px;
+            margin-top: 20px;
+            margin-bottom: 40px;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--white-text);
+            display: inline-block;
+        }
+
+        /* Secciones generales */
+        section {
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        section:nth-of-type(odd) {
+            background-color: var(--light-bg);
+        }
+
+        section:nth-of-type(even) {
+            background-color: var(--white-text);
+        }
+
+        section h2 {
+            margin-bottom: 40px;
+            color: var(--primary-color);
+        }
+
+        /* Sección Beneficios */
+        #beneficios .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .benefit-item {
+            background-color: var(--white-text);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+            text-align: left;
+        }
+
+        .benefit-item:hover {
+            transform: translateY(-10px);
+        }
+
+        .benefit-item .icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .benefit-item h3 {
+            margin-bottom: 10px;
+            color: var(--dark-text);
+        }
+
+        /* Sección Testimonios */
+        #testimonios {
+            background-color: var(--light-bg);
+        }
+
+        #testimonios .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .testimonial-card {
+            background-color: var(--white-text);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+
+        .testimonial-card p {
+            font-style: italic;
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            color: var(--secondary-color);
+        }
+
+        .testimonial-card .author {
+            font-weight: 600;
+            color: var(--dark-text);
+        }
+
+        /* Sección CTA Final */
+        #cta-final {
+            background-color: var(--primary-color);
+            color: var(--white-text);
+            padding: 100px 20px;
+        }
+
+        #cta-final h2 {
+            color: var(--white-text);
+            margin-bottom: 40px;
+            font-size: 3rem;
+        }
+
+        /* Footer */
+        #footer {
+            background-color: var(--dark-text);
+            color: var(--white-text);
+            padding: 40px 20px;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        #footer p {
+            margin: 0;
+        }
+
+        /* Responsividad */
+        @media (max-width: 768px) {
+            #hero h1 { font-size: 3rem; }
+            #hero h2 { font-size: 2rem; }
+            #hero p { font-size: 1rem; }
+            .countdown-timer { font-size: 1.2rem; }
+            h2 { font-size: 2rem; }
+            .button { padding: 12px 25px; font-size: 1rem; }
+            .button.large { padding: 15px 30px; font-size: 1.1rem; }
+            #beneficios .benefits-grid,
+            #testimonios .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            #hero { padding: 80px 15px; }
+            #hero h1 { font-size: 2.5rem; }
+            #hero h2 { font-size: 1.7rem; }
+            #hero p { font-size: 0.9rem; }
+            .countdown-timer { padding: 10px 20px; font-size: 1rem; }
+            section { padding: 60px 0; }
+            h2 { font-size: 1.8rem; }
+            .button { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Sección Hero -->
+    <section id="hero">
+        <div class="container">
+            <h1>Promo Efectivale</h1>
+            <h2>¡20% de Descuento en Tus Próximas Compras!</h2>
+            <p>
+                Aprovecha esta increíble oferta por tiempo limitado. ¡No dejes pasar la oportunidad de ahorrar en tus productos y servicios favoritos con Efectivale!
+            </p>
+            <div class="countdown-timer">
+                ¡Oferta válida solo por 7 días!
+            </div>
+            <a href="#cta-final" class="button large">¡Quiero mi 20% de Descuento Ahora!</a>
+        </div>
+    </section>
+
+    <!-- Sección de Beneficios -->
+    <section id="beneficios">
+        <div class="container">
+            <h2>Descubre los Beneficios de Efectivale</h2>
+            <div class="benefits-grid">
+                <div class="benefit-item">
+                    <span class="icon">&#128176;</span> <!-- Emoji de billete de banco -->
+                    <h3>Ahorro Garantizado</h3>
+                    <p>Obtén un 20% de descuento directo en tus compras, maximizando tu presupuesto y obteniendo más por menos.</p>
+                </div>
+                <div class="benefit-item">
+                    <span class="icon">&#128722;</span> <!-- Emoji de carrito de compras -->
+                    <h3>Amplia Red de Comercios</h3>
+                    <p>Utiliza tu Efectivale en miles de establecimientos afiliados, desde supermercados hasta restaurantes y tiendas especializadas.</p>
+                </div>
+                <div class="benefit-item">
+                    <span class="icon">&#128172;</span> <!-- Emoji de charla -->
+                    <h3>Facilidad de Uso</h3>
+                    <p>Nuestra plataforma es intuitiva y fácil de usar. Realiza tus compras de forma rápida y segura, sin complicaciones.</p>
+                </div>
+                <div class="benefit-item">
+                    <span class="icon">&#128221;</span> <!-- Emoji de lista -->
+                    <h3>Control de Gastos</h3>
+                    <p>Gestiona tus vales y descuentos desde un solo lugar. Ten un seguimiento claro de tus beneficios y ahorros.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Testimonios -->
+    <section id="testimonios">
+        <div class="container">
+            <h2>Lo que dicen nuestros clientes satisfechos</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <p>"¡Estoy encantada con Efectivale! El 20% de descuento me permitió comprar lo que necesitaba y aún así ahorrar. Es muy fácil de usar."</p>
+                    <span class="author">Ana G.</span>
+                </div>
+                <div class="testimonial-card">
+                    <p>"Nunca pensé que ahorrar fuera tan sencillo. Con Efectivale, mis gastos semanales han disminuido significativamente. ¡Recomendado!"</p>
+                    <span class="author">Roberto M.</span>
+                </div>
+                <div class="testimonial-card">
+                    <p>"Gracias a esta promoción de Efectivale, pude darme un gusto que tenía pendiente. La red de comercios es amplia y siempre encuentro dónde usarlo."</p>
+                    <span class="author">Laura S.</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección CTA Final (Botón de Compra) -->
+    <section id="cta-final">
+        <div class="container">
+            <h2>¡No esperes más! Obtén tu 20% de descuento hoy mismo</h2>
+            <p>Esta oferta exclusiva termina en 7 días. ¡Actúa ahora y comienza a ahorrar con Efectivale!</p>
+            <a href="#" class="button large">¡Aplicar Descuento Ahora!</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="footer">
+        <div class="container">
+            <p>&copy; 2023 Efectivale. Todos los derechos reservados.</p>
+            <p><a href="#">Términos y Condiciones</a> | <a href="#">Política de Privacidad</a></p>
+        </div>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Aprovecha la campaña de abril vales de despensa 2026 de Efectivale. Vales de despensa modernos y con beneficios fiscales para tu empresa.">
+    <title>campaña de abril vales de despensa</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #be0f34;
+            --secondary-color: #6d6e65;
+            --text-color-light: #FFFFFF;
+            --text-color-dark: #333333;
+            --padding-base: 20px;
+            --border-radius-base: 8px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color-light);
+            background-color: var(--secondary-color);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--padding-base);
+        }
+
+        /* HEADER */
+        .header {
+            background-color: rgba(0, 0, 0, 0.4); /* Semi-transparent for overlay */
+            padding-top: var(--padding-base);
+            position: absolute;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            height: 60px;
+        }
+
+        .nav img {
+            height: 40px; /* Adjust as needed */
+            filter: drop-shadow(0 0 5px rgba(0,0,0,0.5));
+        }
+
+        /* HERO SECTION */
+        .hero {
+            background-image: url('https://image.pollinations.ai/prompt/premium-business-despensa-texture-corporate-dark');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            padding: 180px 0 100px; /* Adjust top padding for header */
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            flex-direction: column;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.4) 100%);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+        }
+
+        .hero h1 {
+            font-size: 3.5em;
+            margin-bottom: var(--padding-base);
+            line-height: 1.1;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--text-color-light);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+
+        .hero h2 {
+            font-size: 2.2em;
+            margin-bottom: var(--padding-base) * 1.5;
+            font-weight: 300;
+            color: var(--text-color-light);
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-duration {
+            background-color: var(--primary-color);
+            padding: 10px 25px;
+            border-radius: var(--border-radius-base);
+            font-size: 1.4em;
+            font-weight: 700;
+            display: inline-block;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            margin-bottom: var(--padding-base) * 2;
+        }
+
+        .hero-product-image {
+            max-width: 300px;
+            height: auto;
+            margin-top: var(--padding-base) * 2;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border-radius: var(--border-radius-base);
+            transition: transform 0.3s ease-in-out;
+        }
+        .hero-product-image:hover {
+            transform: translateY(-5px) scale(1.02);
+        }
+
+        /* SECTIONS GENERAL */
+        .section {
+            padding: 80px 0;
+            position: relative;
+            z-index: 5;
+        }
+
+        .section-dark {
+            background-color: var(--secondary-color);
+        }
+        .section-primary {
+            background-color: var(--primary-color);
+        }
+
+        .section h3 {
+            font-size: 2.5em;
+            text-align: center;
+            margin-bottom: var(--padding-base) * 2;
+            color: var(--text-color-light);
+            font-weight: 700;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+
+        /* BENEFITS TABLE */
+        .benefits-table-wrapper {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch; /* For smoother scrolling on iOS */
+            padding-bottom: var(--padding-base); /* Space for scrollbar */
+        }
+
+        .benefits-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: var(--padding-base);
+            min-width: 700px; /* Ensures table is wide enough for scroll */
+        }
+
+        .benefits-table th,
+        .benefits-table td {
+            padding: var(--padding-base);
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .benefits-table th {
+            background-color: rgba(255, 255, 255, 0.1);
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.9em;
+            color: var(--text-color-light);
+        }
+
+        .benefits-table td {
+            background-color: rgba(255, 255, 255, 0.05);
+            color: var(--text-color-light);
+        }
+
+        .benefits-table tr:hover td {
+            background-color: rgba(255, 255, 255, 0.15);
+            transition: background-color 0.3s ease;
+        }
+
+        .benefits-icon {
+            height: 30px;
+            vertical-align: middle;
+            margin-right: 10px;
+        }
+
+        /* FORM SECTION */
+        .form-section {
+            background-color: var(--primary-color);
+            padding: 80px 0;
+        }
+        
+        .form-section h3 {
+            color: var(--text-color-light);
+        }
+
+        .contact-form {
+            background-color: rgba(0, 0, 0, 0.3); /* Darker overlay for contrast */
+            padding: var(--padding-base) * 2;
+            border-radius: var(--border-radius-base);
+            max-width: 600px;
+            margin: 0 auto;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+        }
+
+        .contact-form label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 400;
+            color: var(--text-color-light);
+        }
+
+        .contact-form input[type="text"],
+        .contact-form input[type="tel"],
+        .contact-form input[type="email"],
+        .contact-form textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: var(--padding-base);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: var(--border-radius-base);
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--text-color-light);
+            font-size: 1em;
+            transition: border-color 0.3s ease, background-color 0.3s ease;
+        }
+
+        .contact-form input[type="text"]:focus,
+        .contact-form input[type="tel"]:focus,
+        .contact-form input[type="email"]:focus,
+        .contact-form textarea:focus {
+            border-color: var(--text-color-light);
+            background-color: rgba(255, 255, 255, 0.2);
+            outline: none;
+        }
+
+        .contact-form textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .contact-form button {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background-color: var(--secondary-color);
+            color: var(--text-color-light);
+            border: none;
+            border-radius: var(--border-radius-base);
+            font-size: 1.1em;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .contact-form button:hover {
+            background-color: #5a5b51; /* Darker secondary */
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        /* FOOTER */
+        .footer {
+            background-color: #333333; /* Even darker for footer */
+            color: rgba(255, 255, 255, 0.7);
+            text-align: center;
+            padding: var(--padding-base) * 1.5;
+            font-size: 0.9em;
+        }
+
+        /* TOAST NOTIFICATION */
+        .toast-notification {
+            visibility: hidden;
+            min-width: 250px;
+            background-color: #4CAF50; /* Green for success */
+            color: var(--text-color-light);
+            text-align: center;
+            border-radius: var(--border-radius-base);
+            padding: 16px;
+            position: fixed;
+            z-index: 1001;
+            left: 50%;
+            bottom: 30px;
+            transform: translateX(-50%);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+            opacity: 0;
+            transition: visibility 0s, opacity 0.5s ease;
+        }
+
+        .toast-notification.show {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        /* RESPONSIVE DESIGN */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5em;
+            }
+
+            .hero h2 {
+                font-size: 1.5em;
+            }
+
+            .hero-duration {
+                font-size: 1.2em;
+                padding: 8px 20px;
+            }
+
+            .hero-product-image {
+                max-width: 200px;
+            }
+
+            .section h3 {
+                font-size: 2em;
+            }
+
+            .section {
+                padding: 60px 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav img {
+                height: 35px;
+            }
+
+            .hero h1 {
+                font-size: 2em;
+            }
+
+            .hero h2 {
+                font-size: 1.2em;
+            }
+
+            .hero-duration {
+                font-size: 1em;
+                padding: 6px 15px;
+            }
+
+            .hero-product-image {
+                max-width: 150px;
+            }
+
+            .section h3 {
+                font-size: 1.8em;
+            }
+
+            .contact-form {
+                padding: var(--padding-base);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <img src="/resources/logos/logo efectivale blanco.svg" alt="Logo Efectivale Blanco">
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content container">
+                <h1>campaña de abril vales de despensa</h1>
+                <h2>aprovecha la venta de vales de despensa en Efectivale</h2>
+                <div class="hero-duration">Vigencia: 120 días</div>
+                <img src="/resources/despensa/02-EFC-DESPENSA-PLUS.webp" alt="Tarjeta Efectivale Despensa Plus" class="hero-product-image">
+            </div>
+        </section>
+
+        <section class="section section-dark">
+            <div class="container">
+                <h3>Potencia el Bienestar de Tus Colaboradores con Efectivale</h3>
+                <div class="benefits-table-wrapper">
+                    <table class="benefits-table">
+                        <thead>
+                            <tr>
+                                <th>Beneficio Clave</th>
+                                <th>Descripción</th>
+                                <th>Impacto para tu Empresa</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><img src="/resources/despensa/ICONO DESPENSA .svg" alt="Icono Despensa" class="benefits-icon"> Deducción Fiscal</td>
+                                <td>Vales de despensa 100% deducibles de impuestos para tu empresa.</td>
+                                <td>Optimiza tu carga tributaria y maximiza tus ahorros.</td>
+                            </tr>
+                            <tr>
+                                <td><img src="/resources/despensa/ICONO DESPENSA .svg" alt="Icono Despensa" class="benefits-icon"> Aumento de Poder Adquisitivo</td>
+                                <td>Tus colaboradores acceden a productos básicos y mejoran su calidad de vida.</td>
+                                <td>Empleados más felices y productivos, con mayor lealtad a la empresa.</td>
+                            </tr>
+                            <tr>
+                                <td><img src="/resources/despensa/ICONO DESPENSA .svg" alt="Icono Despensa" class="benefits-icon"> Administración Simplificada</td>
+                                <td>Plataforma intuitiva para gestionar la dispersión y recarga de vales.</td>
+                                <td>Reduce tiempos y costos administrativos en la gestión de prestaciones.</td>
+                            </tr>
+                            <tr>
+                                <td><img src="/resources/despensa/ICONO DESPENSA .svg" alt="Icono Despensa" class="benefits-icon"> Amplia Red de Aceptación</td>
+                                <td>Miles de establecimientos a nivel nacional aceptan Efectivale Despensa.</td>
+                                <td>Libertad y conveniencia para tus empleados en sus compras diarias.</td>
+                            </tr>
+                            <tr>
+                                <td><img src="/resources/despensa/ICONO DESPENSA .svg" alt="Icono Despensa" class="benefits-icon"> Modernidad y Seguridad</td>
+                                <td>Tarjetas con tecnología chip y sin contacto, respaldadas por Mastercard.</td>
+                                <td>Transacciones seguras y una imagen moderna para tu empresa.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <section class="section form-section">
+            <div class="container">
+                <h3>¡Cotiza Ahora y Optimiza Tus Beneficios!</h3>
+                <form id="contactForm" class="contact-form">
+                    <input type="hidden" name="nombre_campania" value="campaña de abril vales de despensa">
+                    <input type="hidden" name="año_campania" value="2026">
+                    <div>
+                        <label for="nombre">Nombre Completo:</label>
+                        <input type="text" id="nombre" name="nombre" required placeholder="Tu Nombre">
+                    </div>
+                    <div>
+                        <label for="empresa">Empresa:</label>
+                        <input type="text" id="empresa" name="empresa" required placeholder="Nombre de tu Empresa">
+                    </div>
+                    <div>
+                        <label for="telefono">Teléfono:</label>
+                        <input type="tel" id="telefono" name="telefono" required placeholder="Ej: 5512345678">
+                    </div>
+                    <div>
+                        <label for="correo">Correo Electrónico:</label>
+                        <input type="email" id="correo" name="correo" required placeholder="tu.correo@ejemplo.com">
+                    </div>
+                    <div>
+                        <label for="comentarios">Comentarios:</label>
+                        <textarea id="comentarios" name="comentarios" rows="5" placeholder="¿Cómo podemos ayudarte?"></textarea>
+                    </div>
+                    <button type="submit">Enviar Solicitud</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Efectivale. Todos los derechos reservados.</p>
+            <p>Una empresa de Grupo Financiero Ve por Más.</p>
+        </div>
+    </footer>
+
+    <div id="toastNotification" class="toast-notification">
+        ¡Tu solicitud ha sido enviada con éxito! Nos pondremos en contacto contigo pronto.
+    </div>
+
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', async function(event) {
+            event.preventDefault();
+
+            const data = new FormData(event.target);
+            
+            try {
+                const response = await fetch('/api/landing/contacto', {
+                    method: 'POST',
+                    body: data
+                });
+
+                if (response.ok) {
+                    showToast('¡Tu solicitud ha sido enviada con éxito! Nos pondremos en contacto contigo pronto.');
+                    event.target.reset(); // Clear the form
+                } else {
+                    // Handle server-side errors
+                    const errorData = await response.json();
+                    showToast(`Error al enviar: ${errorData.message || 'Inténtalo de nuevo.'}`, 'error');
+                }
+            } catch (error) {
+                console.error('Error al enviar el formulario:', error);
+                showToast('Hubo un problema al enviar tu solicitud. Por favor, inténtalo de nuevo más tarde.', 'error');
+            }
+        });
+
+        function showToast(message, type = 'success') {
+            const toast = document.getElementById('toastNotification');
+            toast.textContent = message;
+            
+            if (type === 'error') {
+                toast.style.backgroundColor = '#d32f2f'; // Red for error
+            } else {
+                toast.style.backgroundColor = '#4CAF50'; // Green for success
+            }
+
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 5000); // Hide after 5 seconds
+        }
+    </script>
+</body>
+</html>

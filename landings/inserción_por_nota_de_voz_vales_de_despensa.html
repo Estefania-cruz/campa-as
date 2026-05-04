@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>inserción por nota de voz vales de despensa</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #be0f34; /* Rojo */
+            --secondary-color: #6d6e65; /* Gris */
+            --text-white: #FFFFFF;
+            --text-dark: #333333; /* Gris oscuro para texto sobre fondo blanco */
+            --bg-light: #f8f8f8; /* Gris muy claro */
+            --toast-success: #28a745;
+            --toast-error: #dc3545;
+        }
+
+        /* Base Reset & Typography */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* Header/Nav */
+        .header {
+            background-color: var(--primary-color);
+            padding: 20px 0; /* Padding superior de 20px */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .header .logo {
+            max-height: 50px;
+            width: auto;
+            display: block;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 60vh; /* Ajustable */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background-image: url('https://image.pollinations.ai/prompt/premium-business-despensa-texture-corporate-dark');
+            background-size: cover;
+            background-position: center;
+            color: var(--text-white);
+            padding: 3rem 0;
+            overflow: hidden; /* Ensure overlay doesn't exceed bounds */
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6); /* Overlay oscuro para contraste */
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            padding: 0 1.5rem;
+        }
+
+        .hero h1 {
+            font-size: 3.2rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            font-weight: 400;
+            margin-bottom: 2rem;
+        }
+
+        /* Section Styling */
+        section {
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2.5rem;
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+
+        .section-primary {
+            background-color: var(--primary-color);
+            color: var(--text-white);
+        }
+
+        .section-primary h2 {
+            color: var(--text-white);
+        }
+
+        .section-secondary {
+            background-color: var(--secondary-color);
+            color: var(--text-white);
+        }
+
+        .section-secondary h2 {
+            color: var(--text-white);
+        }
+
+        /* Product Card Section */
+        .product-card-section {
+            background-color: var(--bg-light);
+            padding: 4rem 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .product-card {
+            background-color: var(--text-white);
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            padding: 2.5rem;
+            max-width: 450px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 1.5rem;
+        }
+
+        .product-card img.product-image {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 1.5rem;
+            max-height: 250px;
+            object-fit: contain;
+        }
+
+        .product-card img.icon-despensa {
+            width: 80px;
+            height: auto;
+            margin-bottom: 1.5rem;
+        }
+
+        .product-card h3 {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .product-card p {
+            font-size: 1.1rem;
+            color: var(--text-dark);
+            line-height: 1.8;
+        }
+
+        /* Benefits Table */
+        .benefits-table-wrapper {
+            overflow-x: auto; /* Required for desktop responsiveness */
+            margin-top: 3rem;
+        }
+
+        .benefits-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0 auto;
+            background-color: var(--text-white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            min-width: 700px; /* To ensure horizontal scroll on smaller desktops */
+        }
+
+        .benefits-table th, .benefits-table td {
+            padding: 1.2rem 1.5rem;
+            text-align: left;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .benefits-table th {
+            background-color: var(--primary-color);
+            color: var(--text-white);
+            font-weight: 600;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+        }
+
+        .benefits-table td {
+            color: var(--text-dark);
+            font-weight: 400;
+            font-size: 1rem;
+        }
+
+        .benefits-table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        .benefits-table tr:hover {
+            background-color: #e6e6e6;
+            transition: background-color 0.3s ease;
+        }
+
+        /* Form Section */
+        .form-section {
+            background-color: var(--secondary-color);
+            padding: 5rem 0;
+        }
+
+        .form-section h2 {
+            color: var(--text-white);
+        }
+
+        .contact-form {
+            background-color: var(--text-white);
+            border-radius: 12px;
+            padding: 3rem;
+            max-width: 600px;
+            margin: 0 auto;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            text-align: left;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.7rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            font-size: 1rem;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="tel"],
+        .form-group input[type="email"],
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem 1.2rem;
+            border: 1px solid #ced4da;
+            border-radius: 8px;
+            font-size: 1rem;
+            color: var(--text-dark);
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .form-group input[type="text"]:focus,
+        .form-group input[type="tel"]:focus,
+        .form-group input[type="email"]:focus,
+        .form-group textarea:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(var(--primary-color-rgb, 190, 15, 52), 0.25); /* Fallback for older browsers */
+            outline: none;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .submit-button {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: var(--text-white);
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            width: 100%;
+        }
+
+        .submit-button:hover {
+            background-color: #a30b2c; /* Tono más oscuro de rojo */
+            transform: translateY(-2px);
+        }
+
+        .submit-button:active {
+            transform: translateY(0);
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--primary-color);
+            color: var(--text-white);
+            padding: 2.5rem 0;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+
+        /* Toast Notification */
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--toast-success);
+            color: var(--text-white);
+            padding: 15px 25px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+            z-index: 1000;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        .toast.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            .hero p {
+                font-size: 1.3rem;
+            }
+            section h2 {
+                font-size: 2rem;
+            }
+            .product-card {
+                max-width: 90%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                height: 70vh;
+            }
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            .hero p {
+                font-size: 1.1rem;
+            }
+            section {
+                padding: 3rem 0;
+            }
+            section h2 {
+                font-size: 1.8rem;
+            }
+
+            /* Mobile table as cards */
+            .benefits-table {
+                border: 0;
+                min-width: unset; /* Remove min-width for mobile */
+            }
+
+            .benefits-table thead {
+                border: none;
+                clip: rect(0 0 0 0);
+                height: 1px;
+                margin: -1px;
+                overflow: hidden;
+                padding: 0;
+                position: absolute;
+                width: 1px;
+            }
+
+            .benefits-table tr {
+                border-bottom: 3px solid #ddd;
+                display: block;
+                margin-bottom: .625em;
+                background-color: var(--text-white);
+                border-radius: 8px;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            }
+            
+            .benefits-table tr:nth-child(even) {
+                background-color: var(--text-white); /* Reset for card style */
+            }
+
+            .benefits-table td {
+                border-bottom: 1px solid #ddd;
+                display: block;
+                font-size: .8em;
+                text-align: right;
+                padding-left: 50%; /* Make room for the data label */
+                position: relative;
+            }
+
+            .benefits-table td::before {
+                /*
+                * aria-label a pseudo element to display the data label
+                */
+                content: attr(data-label);
+                position: absolute;
+                left: 0;
+                width: 45%;
+                padding-left: 1rem;
+                font-weight: bold;
+                text-align: left;
+                color: var(--primary-color);
+            }
+
+            .benefits-table td:last-child {
+                border-bottom: 0;
+            }
+
+            .contact-form {
+                padding: 2rem;
+                margin: 0 1rem;
+            }
+            .form-group label {
+                font-size: 0.95rem;
+            }
+            .form-group input, .form-group textarea, .submit-button {
+                font-size: 0.95rem;
+                padding: 0.8rem 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 1rem;
+            }
+            .hero {
+                height: 80vh;
+            }
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            .hero p {
+                font-size: 1rem;
+            }
+            .header .logo {
+                max-height: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <img src="/resources/logos/logo efectivale blanco.svg" alt="Logo Efectivale" class="logo">
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1>aprovecha la venta de vales de despensa en Efectivale</h1>
+                <p>Campaña excepcional válida por 120 días. ¡Maximiza el bienestar de tu equipo!</p>
+            </div>
+        </section>
+
+        <section class="product-card-section">
+            <div class="product-card">
+                <img src="/resources/despensa/ICONO DESPENSA .svg" alt="Icono de Despensa" class="icon-despensa">
+                <h3>El Poder de la Despensa</h3>
+                <p>Una solución estratégica para empresas, impulsando la productividad y el reconocimiento a tus colaboradores, con beneficios tangibles para todos.</p>
+            </div>
+            <div class="product-card">
+                <img src="/resources/despensa/02-EFC-DESPENSA-PLUS.webp" alt="Tarjeta Efectivale Despensa Plus" class="product-image">
+                <h3>Efectivale Despensa Plus</h3>
+                <p>La tarjeta ideal para cubrir las necesidades básicas de tu personal, ofreciendo seguridad, control y un amplio catálogo de establecimientos.</p>
+            </div>
+        </section>
+
+        <section class="section-primary">
+            <div class="container">
+                <h2>Beneficios Corporativos de Efectivale Despensa</h2>
+                <div class="benefits-table-wrapper">
+                    <table class="benefits-table">
+                        <thead>
+                            <tr>
+                                <th>Beneficio Clave</th>
+                                <th>Para la Empresa</th>
+                                <th>Para el Colaborador</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td data-label="Beneficio Clave">Deducibilidad Fiscal</td>
+                                <td data-label="Para la Empresa">Hasta el 100% deducible de ISR para tu empresa, optimizando tu carga tributaria.</td>
+                                <td data-label="Para el Colaborador">Ingreso exento de impuestos sobre la renta (ISR), aumentando su poder adquisitivo real.</td>
+                            </tr>
+                            <tr>
+                                <td data-label="Beneficio Clave">Motivación y Retención</td>
+                                <td data-label="Para la Empresa">Fortalece el compromiso del equipo, reduce la rotación y atrae nuevo talento.</td>
+                                <td data-label="Para el Colaborador">Recibe un apoyo directo que mejora su calidad de vida y la de su familia.</td>
+                            </tr>
+                            <tr>
+                                <td data-label="Beneficio Clave">Facilidad de Administración</td>
+                                <td data-label="Para la Empresa">Plataforma intuitiva y soporte dedicado para una gestión eficiente y sin complicaciones.</td>
+                                <td data-label="Para el Colaborador">Control total de sus gastos, recargas automáticas y amplia aceptación en comercios.</td>
+                            </tr>
+                            <tr>
+                                <td data-label="Beneficio Clave">Flexibilidad y Cobertura</td>
+                                <td data-label="Para la Empresa">Adapta los montos y frecuencias según las necesidades de tu plantilla y objetivos.</td>
+                                <td data-label="Para el Colaborador">Acceso a una extensa red de supermercados, tiendas de conveniencia y mercados locales.</td>
+                            </tr>
+                            <tr>
+                                <td data-label="Beneficio Clave">Seguridad Total</td>
+                                <td data-label="Para la Empresa">Elimina riesgos asociados al manejo de efectivo y brinda tranquilidad a tu organización.</td>
+                                <td data-label="Para el Colaborador">Protección por NIP, reportes de movimientos y respaldo de Efectivale ante cualquier incidente.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <section class="form-section">
+            <div class="container">
+                <h2>Agenda una Asesoría y Eleva el Bienestar de tu Equipo</h2>
+                <form id="contactForm" class="contact-form">
+                    <div class="form-group">
+                        <label for="nombre">Nombre Completo</label>
+                        <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="empresa">Empresa</label>
+                        <input type="text" id="empresa" name="empresa" placeholder="Nombre de tu empresa" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="telefono">Teléfono</label>
+                        <input type="tel" id="telefono" name="telefono" placeholder="Ej: 5512345678" pattern="[0-9]{10}" title="Por favor ingresa un número de teléfono válido de 10 dígitos" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="correo">Correo Electrónico</label>
+                        <input type="email" id="correo" name="correo" placeholder="ejemplo@empresa.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="comentarios">Comentarios (Opcional)</label>
+                        <textarea id="comentarios" name="comentarios" placeholder="¿Cómo podemos ayudarte?"></textarea>
+                    </div>
+                    <input type='hidden' name='nombre_campania' value='inserción por nota de voz vales de despensa'>
+                    <button type="submit" class="submit-button">Enviar Solicitud</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Efectivale. Todos los derechos reservados.</p>
+            <p>Conoce más sobre nuestras soluciones para tu empresa.</p>
+        </div>
+    </footer>
+
+    <div id="toast" class="toast">¡Gracias! Tu solicitud ha sido enviada con éxito.</div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.getElementById('contactForm');
+            const toast = document.getElementById('toast');
+
+            form.addEventListener('submit', async (event) => {
+                event.preventDefault(); // Evita el envío tradicional del formulario
+
+                const formData = new FormData(form);
+                
+                try {
+                    const response = await fetch('/api/landing/contacto', {
+                        method: 'POST',
+                        body: formData
+                    });
+
+                    if (response.ok) {
+                        // Muestra el toast de éxito
+                        toast.textContent = '¡Gracias! Tu solicitud ha sido enviada con éxito.';
+                        toast.style.backgroundColor = 'var(--toast-success)';
+                        toast.classList.add('show');
+                        setTimeout(() => {
+                            toast.classList.remove('show');
+                        }, 5000); // El toast desaparece después de 5 segundos
+
+                        // Limpia el formulario
+                        form.reset();
+                    } else {
+                        // Maneja errores de la API
+                        const errorData = await response.json();
+                        console.error('Error al enviar el formulario:', errorData);
+                        toast.textContent = 'Ocurrió un error al enviar tu solicitud. Inténtalo de nuevo.';
+                        toast.style.backgroundColor = 'var(--toast-error)';
+                        toast.classList.add('show');
+                        setTimeout(() => {
+                            toast.classList.remove('show');
+                        }, 5000);
+                    }
+                } catch (error) {
+                    // Maneja errores de red o del fetch
+                    console.error('Error de red o del servidor:', error);
+                    toast.textContent = 'Ocurrió un error de conexión. Por favor, revisa tu internet.';
+                    toast.style.backgroundColor = 'var(--toast-error)';
+                    toast.classList.add('show');
+                    setTimeout(() => {
+                        toast.classList.remove('show');
+                    }, 5000);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

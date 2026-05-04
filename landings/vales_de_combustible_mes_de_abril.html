@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vales de combustible mes de abril | Efectivale</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #be0f34;
+            --secondary-color: #6d6e65;
+            --text-light: #FFFFFF;
+            --text-dark: #333333;
+            --background-light: #f4f4f4;
+            --padding-section: 60px 40px;
+            --border-radius: 8px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--background-light);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header / Nav */
+        header {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding-top: 20px;
+            position: sticky;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-bottom: 20px;
+        }
+
+        nav .logo img {
+            height: 40px; /* Adjust as needed */
+            max-width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            background-image: url('https://image.pollinations.ai/prompt/premium-business-gasolina-texture-corporate-dark');
+            background-size: cover;
+            background-position: center;
+            color: var(--text-light);
+            text-align: center;
+            padding: var(--padding-section) 20px;
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6); /* Dark overlay for text contrast */
+        }
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            max-width: 900px;
+        }
+
+        .hero h1 {
+            font-size: 3.2em;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.5em;
+            font-weight: 400;
+            margin-bottom: 30px;
+        }
+
+        .duration-tag {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            padding: 10px 25px;
+            border-radius: var(--border-radius);
+            font-size: 1.1em;
+            font-weight: 600;
+            display: inline-block;
+            margin-top: 20px;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .btn {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            padding: 15px 35px;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            font-size: 1.1em;
+            font-weight: 600;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            display: inline-block;
+            margin-top: 20px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #a30c2c; /* Slightly darker red */
+            transform: translateY(-3px);
+        }
+
+        /* Section Styling */
+        .section {
+            padding: var(--padding-section) 0;
+            text-align: center;
+        }
+
+        .section.dark {
+            background-color: var(--secondary-color);
+            color: var(--text-light);
+        }
+        .section.primary {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+        }
+
+        .section h2 {
+            font-size: 2.5em;
+            margin-bottom: 40px;
+            font-weight: 700;
+        }
+
+        .section p {
+            font-size: 1.1em;
+            margin-bottom: 20px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Benefits */
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .benefit-item {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: var(--border-radius);
+            text-align: center;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+        .benefit-item:hover {
+            transform: translateY(-5px);
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .benefit-item img {
+            height: 60px;
+            margin-bottom: 20px;
+        }
+
+        .benefit-item h3 {
+            font-size: 1.4em;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .benefit-item p {
+            font-size: 1em;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* Product Showcase */
+        .product-showcase {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .product-card {
+            background-color: var(--text-light);
+            border-radius: var(--border-radius);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            text-align: center;
+            max-width: 380px;
+            width: 100%;
+            transition: transform 0.3s ease;
+        }
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-card img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 20px;
+        }
+
+        .product-card h3 {
+            color: var(--primary-color);
+            font-size: 1.6em;
+            margin-bottom: 10px;
+        }
+        .product-card p {
+            color: var(--text-dark);
+            font-size: 1em;
+            line-height: 1.5;
+        }
+
+        /* Responsive Table */
+        .responsive-table-container {
+            overflow-x: auto;
+            margin-top: 40px;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0 auto;
+            min-width: 600px; /* Ensure table doesn't get too small */
+        }
+
+        .data-table th, .data-table td {
+            padding: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            text-align: left;
+        }
+
+        .data-table th {
+            background-color: rgba(0, 0, 0, 0.3);
+            font-weight: 600;
+            font-size: 1.1em;
+        }
+
+        .data-table tr:nth-child(even) {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+        .data-table tr:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Contact Form */
+        .contact-form-section {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            padding: var(--padding-section) 20px;
+            text-align: center;
+        }
+
+        .contact-form-section h2 {
+            font-size: 2.5em;
+            margin-bottom: 40px;
+        }
+
+        .contact-form {
+            max-width: 700px;
+            margin: 0 auto;
+            background-color: rgba(255, 255, 255, 0.15);
+            padding: 40px;
+            border-radius: var(--border-radius);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            text-align: left;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            font-size: 1.1em;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: var(--border-radius);
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--text-light);
+            font-size: 1em;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--text-light);
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .contact-form button.btn {
+            width: 100%;
+            padding: 15px;
+            font-size: 1.2em;
+            margin-top: 20px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--text-dark); /* Darker footer */
+            color: rgba(255, 255, 255, 0.7);
+            text-align: center;
+            padding: 30px 20px;
+            font-size: 0.9em;
+        }
+
+        /* Toast Notification */
+        .toast-notification {
+            visibility: hidden;
+            min-width: 280px;
+            background-color: #333;
+            color: var(--text-light);
+            text-align: center;
+            border-radius: var(--border-radius);
+            padding: 16px;
+            position: fixed;
+            z-index: 1001;
+            left: 50%;
+            bottom: 30px;
+            transform: translateX(-50%);
+            font-size: 1.1em;
+            opacity: 0;
+            transition: visibility 0s, opacity 0.5s ease;
+        }
+
+        .toast-notification.show {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5em;
+            }
+            .hero p {
+                font-size: 1.2em;
+            }
+            .section h2 {
+                font-size: 2em;
+            }
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+            .product-showcase {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2em;
+            }
+            .hero p {
+                font-size: 1em;
+            }
+            .section h2 {
+                font-size: 1.8em;
+            }
+            .duration-tag, .btn {
+                font-size: 1em;
+                padding: 12px 25px;
+            }
+            .form-group input, .form-group textarea, .contact-form button.btn {
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">
+                <img src="/resources/logos/logo efectivale blanco.svg" alt="Efectivale Logo Blanco">
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Vales de combustible mes de abril</h1>
+                <p>Vales de combustible mes de abril con promociones de descuentos del 5%</p>
+                <div class="duration-tag">
+                    ¡Oferta válida por 150 días!
+                </div>
+                <a href="#contacto" class="btn">Solicite su Descuento Ahora</a>
+            </div>
+        </section>
+
+        <section id="beneficios" class="section dark">
+            <div class="container">
+                <h2>Ventajas Exclusivas para su Empresa</h2>
+                <p>Optimice la gestión de combustible de su flota con Efectivale. Descubra los beneficios que impulsarán la eficiencia y el ahorro en su operación.</p>
+                <div class="benefits-grid">
+                    <div class="benefit-item">
+                        <img src="/resources/gasolina/ICONO FUEL.svg" alt="Icono Combustible">
+                        <h3>Ahorro Garantizado</h3>
+                        <p>Aproveche el 5% de descuento exclusivo en sus vales de combustible.</p>
+                    </div>
+                    <div class="benefit-item">
+                        <img src="/resources/gasolina/ICONO FUEL.svg" alt="Icono Control">
+                        <h3>Control Total</h3>
+                        <p>Gestione y monitoree el consumo de combustible de su flota de manera eficiente.</p>
+                    </div>
+                    <div class="benefit-item">
+                        <img src="/resources/gasolina/ICONO FUEL.svg" alt="Icono Facilidad">
+                        <h3>Facilidad de Uso</h3>
+                        <p>Interfaz intuitiva para la administración y distribución de vales.</p>
+                    </div>
+                    <div class="benefit-item">
+                        <img src="/resources/gasolina/ICONO FUEL.svg" alt="Icono Red Nacional">
+                        <h3>Amplia Cobertura</h3>
+                        <p>Acceso a una extensa red de estaciones de servicio a nivel nacional.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="productos" class="section">
+            <div class="container">
+                <h2>Nuestras Soluciones de Combustible</h2>
+                <p>Efectivale le ofrece las herramientas más avanzadas para una gestión de combustible sin complicaciones, adaptándose a las necesidades de su negocio.</p>
+                <div class="product-showcase">
+                    <div class="product-card">
+                        <img src="/resources/gasolina/01-EFC-COMBUSTIBLE.webp" alt="Tarjeta Efectivale Combustible">
+                        <h3>Tarjeta Física Combustible</h3>
+                        <p>La solución tangible y segura para el control del gasto de combustible de su flota.</p>
+                    </div>
+                    <div class="product-card">
+                        <img src="/resources/gasolina/03-efc-comb-ecard.webp" alt="E-card Efectivale Combustible">
+                        <h3>E-card Combustible Digital</h3>
+                        <p>Flexibilidad y modernidad con nuestra tarjeta digital, ideal para la nueva era.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="detalles-oferta" class="section primary">
+            <div class="container">
+                <h2>Detalles de la Promoción de Abril</h2>
+                <p>Conozca a fondo las características y beneficios que esta campaña de vales de combustible trae para su empresa.</p>
+                <div class="responsive-table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Característica</th>
+                                <th>Descripción</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Identificador de Campaña</td>
+                                <td>Vales de combustible mes de abril</td>
+                            </tr>
+                            <tr>
+                                <td>Descuento Aplicado</td>
+                                <td>5% sobre el valor total de los vales adquiridos.</td>
+                            </tr>
+                            <tr>
+                                <td>Duración de la Oferta</td>
+                                <td>150 días a partir de la fecha de activación.</td>
+                            </tr>
+                            <tr>
+                                <td>Año de la Campaña</td>
+                                <td>2026</td>
+                            </tr>
+                            <tr>
+                                <td>Tipo de Vales</td>
+                                <td>Físicos y/o Digitales (E-card)</td>
+                            </tr>
+                            <tr>
+                                <td>Beneficio Principal</td>
+                                <td>Reducción significativa en costos operativos de transporte.</td>
+                            </tr>
+                            <tr>
+                                <td>Aplicabilidad</td>
+                                <td>Empresas de todos los tamaños con flotas vehiculares.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <section id="contacto" class="contact-form-section">
+            <div class="container">
+                <h2>Solicite Información y Aproveche el Descuento</h2>
+                <p>Complete el siguiente formulario y un ejecutivo de Efectivale se pondrá en contacto con usted para ofrecerle una solución a la medida.</p>
+                <form class="contact-form" id="contactForm">
+                    <div class="form-group">
+                        <label for="nombre">Nombre Completo <span style="color: #fff8dc;">*</span></label>
+                        <input type="text" id="nombre" name="nombre" placeholder="Su Nombre" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="empresa">Empresa <span style="color: #fff8dc;">*</span></label>
+                        <input type="text" id="empresa" name="empresa" placeholder="Nombre de su Empresa" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="telefono">Teléfono <span style="color: #fff8dc;">*</span></label>
+                        <input type="tel" id="telefono" name="telefono" placeholder="Ej: 5512345678" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="correo">Correo Electrónico <span style="color: #fff8dc;">*</span></label>
+                        <input type="email" id="correo" name="correo" placeholder="ejemplo@empresa.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="comentarios">Comentarios</label>
+                        <textarea id="comentarios" name="comentarios" placeholder="¿Cómo podemos ayudarle?"></textarea>
+                    </div>
+                    <input type="hidden" name="nombre_campania" value="Vales de combustible mes de abril">
+                    <button type="submit" class="btn">Enviar Solicitud</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Efectivale. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <div id="toastNotification" class="toast-notification"></div>
+
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', async function(event) {
+            event.preventDefault(); // Evita el envío tradicional del formulario
+
+            const form = event.target;
+            const data = new FormData(form);
+            const formDataJSON = {};
+            data.forEach((value, key) => {
+                formDataJSON[key] = value;
+            });
+
+            const toast = document.getElementById('toastNotification');
+
+            try {
+                // Simulación de una respuesta de API
+                const response = await fetch('/api/landing/contacto', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(formDataJSON)
+                });
+
+                if (response.ok) {
+                    // Simular una respuesta exitosa
+                    // const result = await response.json(); // Si la API devuelve JSON
+                    toast.textContent = '¡Su solicitud ha sido enviada con éxito! Nos pondremos en contacto pronto.';
+                    toast.style.backgroundColor = '#28a745'; // Green for success
+                } else {
+                    // Manejar errores de la API
+                    toast.textContent = 'Hubo un error al enviar su solicitud. Por favor, intente de nuevo.';
+                    toast.style.backgroundColor = '#dc3545'; // Red for error
+                }
+            } catch (error) {
+                console.error('Error al enviar el formulario:', error);
+                toast.textContent = 'Error de conexión. Verifique su red e intente de nuevo.';
+                toast.style.backgroundColor = '#dc3545'; // Red for error
+            } finally {
+                toast.classList.add('show');
+                setTimeout(() => {
+                    toast.classList.remove('show');
+                }, 4000); // Ocultar toast después de 4 segundos
+                form.reset(); // Reiniciar el formulario
+            }
+        });
+    </script>
+</body>
+</html>

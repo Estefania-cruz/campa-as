@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>prueba de modificación de audio vales de despensa</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #be0f34; /* Rojo Efectivale */
+            --secondary-color: #6d6e65; /* Gris */
+            --text-light: #FFFFFF;
+            --font-family: 'Montserrat', sans-serif;
+            --spacing-unit: 1rem;
+        }
+
+        /* Reset y estilos generales */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-family);
+            line-height: 1.6;
+            background-color: #f4f4f4;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-unit);
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--text-light);
+        }
+
+        /* Header / Nav */
+        .header {
+            background-color: var(--primary-color);
+            padding: 20px var(--spacing-unit);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center; /* Centrar logo */
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header .logo {
+            padding-top: 20px; /* Requisito específico */
+            max-width: 180px;
+            height: auto;
+            display: block; /* Asegurar que el padding se aplique */
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://image.pollinations.ai/prompt/premium-business-despensa-texture-corporate-dark') no-repeat center center/cover;
+            color: var(--text-light);
+            text-align: center;
+            padding: 180px 0 100px;
+            position: relative;
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .hero h1 {
+            font-size: 3.8em;
+            margin-bottom: var(--spacing-unit);
+            font-weight: 700;
+            line-height: 1.1;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero p {
+            font-size: 1.6em;
+            margin-bottom: 2 * var(--spacing-unit);
+            font-weight: 400;
+        }
+
+        .hero .duration {
+            background-color: var(--primary-color);
+            padding: 0.8rem 1.8rem;
+            border-radius: 50px;
+            font-size: 1.4em;
+            font-weight: 700;
+            display: inline-block;
+            margin-top: var(--spacing-unit);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .hero .product-card-hero {
+            position: absolute;
+            bottom: -50px; /* Ajustar según sea necesario para la visibilidad */
+            right: 5%;
+            max-width: 300px;
+            width: 80%;
+            animation: float 3s ease-in-out infinite;
+            display: none; /* Se mostrará solo en pantallas más grandes */
+        }
+
+        @media (min-width: 768px) {
+            .hero .product-card-hero {
+                display: block;
+            }
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+
+        /* Section Styling */
+        .section {
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .section.bg-secondary {
+            background-color: var(--secondary-color);
+            color: var(--text-light);
+        }
+
+        .section.bg-primary {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+        }
+
+        .section h2 {
+            font-size: 2.8em;
+            margin-bottom: 2 * var(--spacing-unit);
+            font-weight: 700;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .section h2::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: 0;
+            width: 80px;
+            height: 4px;
+            background-color: var(--text-light);
+            border-radius: 2px;
+        }
+
+        /* Beneficios Section */
+        .benefits-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .benefit-item {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 10px;
+            max-width: 350px;
+            flex: 1 1 300px;
+            text-align: left;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+        .benefit-item:hover {
+            transform: translateY(-10px);
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .benefit-item img {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 1rem;
+        }
+
+        .benefit-item h3 {
+            font-size: 1.5em;
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+        }
+
+        .benefit-item p {
+            font-size: 1em;
+            opacity: 0.9;
+        }
+
+        /* Tabla Responsiva */
+        .table-responsive-wrapper {
+            overflow-x: auto;
+            margin-top: 3rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+
+        .benefits-table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 600px; /* Asegura que la tabla no sea demasiado pequeña */
+        }
+
+        .benefits-table th,
+        .benefits-table td {
+            padding: 1.2rem 1.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            text-align: left;
+        }
+
+        .benefits-table th {
+            background-color: rgba(255, 255, 255, 0.15);
+            font-weight: 700;
+            font-size: 1.1em;
+        }
+
+        .benefits-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .benefits-table tbody tr:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        .benefits-table td:first-child { font-weight: 600; }
+
+        /* Product Display */
+        .product-display {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .product-display img {
+            max-width: 400px;
+            width: 90%;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            transition: transform 0.4s ease;
+        }
+        .product-display img:hover {
+            transform: scale(1.03);
+        }
+
+        .product-display p {
+            font-size: 1.2em;
+            max-width: 700px;
+            margin-bottom: 2rem;
+        }
+
+        /* Form Section */
+        .form-section {
+            background-color: var(--secondary-color);
+            color: var(--text-light);
+            padding: 4rem 0;
+        }
+
+        .form-container {
+            background-color: rgba(0,0,0,0.4);
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        .form-container h2 {
+            color: var(--text-light);
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.6rem;
+            font-weight: 600;
+            font-size: 1.1em;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem 1.2rem;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 8px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--text-light);
+            font-size: 1em;
+            transition: border-color 0.3s ease, background-color 0.3s ease;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            background-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 0 0 3px rgba(var(--primary-color-rgb-R), var(--primary-color-rgb-G), var(--primary-color-rgb-B), 0.5); /* Dinámico si se usa JS */
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .btn-submit {
+            display: block;
+            width: 100%;
+            padding: 1rem 1.5rem;
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            border: none;
+            border-radius: 8px;
+            font-size: 1.2em;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .btn-submit:hover {
+            background-color: #a30c2c; /* Tono más oscuro del primario */
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #222;
+            color: rgba(255, 255, 255, 0.7);
+            text-align: center;
+            padding: 2rem 0;
+            font-size: 0.9em;
+        }
+
+        /* Toast Notification */
+        #toast-notification {
+            visibility: hidden;
+            min-width: 280px;
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            text-align: center;
+            border-radius: 8px;
+            padding: 16px;
+            position: fixed;
+            z-index: 1001;
+            bottom: 30px;
+            right: 30px;
+            font-size: 1.1em;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out, visibility 0.3s ease-in-out;
+        }
+
+        #toast-notification.show {
+            visibility: visible;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 3em;
+            }
+            .hero p {
+                font-size: 1.4em;
+            }
+            .section h2 {
+                font-size: 2.2em;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header .logo {
+                max-width: 150px;
+            }
+            .hero {
+                padding: 150px 0 80px;
+            }
+            .hero h1 {
+                font-size: 2.5em;
+            }
+            .hero p {
+                font-size: 1.2em;
+            }
+            .hero .duration {
+                font-size: 1.2em;
+                padding: 0.6rem 1.4rem;
+            }
+            .benefits-grid {
+                flex-direction: column;
+                align-items: center;
+            }
+            .benefit-item {
+                max-width: 90%;
+            }
+            .form-container {
+                padding: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2em;
+            }
+            .hero p {
+                font-size: 1em;
+            }
+            .section h2 {
+                font-size: 1.8em;
+            }
+            #toast-notification {
+                min-width: unset;
+                width: calc(100% - 60px);
+                left: 30px;
+                right: 30px;
+                bottom: 20px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Toast Notification Container -->
+    <div id="toast-notification">¡Gracias por tu interés! Nos pondremos en contacto contigo pronto.</div>
+
+    <header class="header">
+        <a href="/">
+            <img src="/resources/logos/logo efectivale blanco.svg" alt="Logo Efectivale" class="logo">
+        </a>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>Vales de despensa Efectivale</h1>
+                <p>La solución inteligente para el bienestar de tus colaboradores y la eficiencia de tu empresa.</p>
+                <div class="duration">
+                    ¡Aprovecha nuestra oferta especial! Válida por 150 días
+                </div>
+                <img src="/resources/despensa/02-EFC-DESPENSA-PLUS.webp" alt="Tarjeta Efectivale Despensa Plus" class="product-card-hero">
+            </div>
+        </section>
+
+        <section class="section bg-primary">
+            <div class="container">
+                <h2>Beneficios que transforman tu negocio</h2>
+                <div class="benefits-grid">
+                    <div class="benefit-item">
+                        <img src="/resources/despensa/ICONO DESPENSA .svg" alt="Ícono de Despensa">
+                        <h3>Ahorro Garantizado</h3>
+                        <p>Optimiza la carga fiscal y obtén beneficios deducibles al 100% para tu empresa.</p>
+                    </div>
+                    <div class="benefit-item">
+                        <img src="/resources/despensa/ICONO DESPENSA .svg" alt="Ícono de Despensa">
+                        <h3>Motivación Laboral</h3>
+                        <p>Incrementa la satisfacción y productividad de tus empleados con un apoyo tangible a su economía familiar.</p>
+                    </div>
+                    <div class="benefit-item">
+                        <img src="/resources/despensa/ICONO DESPENSA .svg" alt="Ícono de Despensa">
+                        <h3>Gestión Simplificada</h3>
+                        <p>Plataforma intuitiva y soporte especializado para una administración de vales sin complicaciones.</p>
+                    </div>
+                    <div class="benefit-item">
+                        <img src="/resources/despensa/ICONO DESPENSA .svg" alt="Ícono de Despensa">
+                        <h3>Amplia Aceptación</h3>
+                        <p>Red nacional de miles de establecimientos para que tus colaboradores elijan dónde usar su vale.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section bg-secondary">
+            <div class="container">
+                <h2>Compara y Decide Inteligentemente</h2>
+                <p>Efectivale Despensa se adapta a tus necesidades. Descubre por qué somos la mejor opción:</p>
+                <div class="table-responsive-wrapper">
+                    <table class="benefits-table">
+                        <thead>
+                            <tr>
+                                <th>Característica</th>
+                                <th>Efectivale Despensa</th>
+                                <th>Otras Opciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Deducibilidad Fiscal</td>
+                                <td>100% (según ley)</td>
+                                <td>Variable</td>
+                            </tr>
+                            <tr>
+                                <td>Red de Comercios</td>
+                                <td>Extensa cobertura nacional</td>
+                                <td>Limitada o regional</td>
+                            </tr>
+                            <tr>
+                                <td>Plataforma Digital</td>
+                                <td>Moderna y autogestionable</td>
+                                <td>Básica o compleja</td>
+                            </tr>
+                            <tr>
+                                <td>Soporte a Empresas</td>
+                                <td>Asesoría personalizada</td>
+                                <td>Genérico o automatizado</td>
+                            </tr>
+                            <tr>
+                                <td>Experiencia Colaborador</td>
+                                <td>App móvil y seguridad PIN</td>
+                                <td>Sin app o limitada</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="product-display">
+                    <img src="/resources/despensa/02-EFC-DESPENSA-PLUS.webp" alt="Efectivale Despensa Plus Card">
+                    <p>La tarjeta Efectivale Despensa Plus: diseño moderno, tecnología de punta y la seguridad que tu empresa y tus colaboradores merecen.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="form-section">
+            <div class="container">
+                <div class="form-container">
+                    <h2>Solicita tu Prueba Gratuita</h2>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="nombre">Nombre Completo <span style="color: var(--primary-color);">*</span></label>
+                            <input type="text" id="nombre" name="nombre" placeholder="Ej. Juan Pérez" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="empresa">Nombre de la Empresa <span style="color: var(--primary-color);">*</span></label>
+                            <input type="text" id="empresa" name="empresa" placeholder="Ej. Corporativo Ejemplo S.A. de C.V." required>
+                        </div>
+                        <div class="form-group">
+                            <label for="telefono">Teléfono <span style="color: var(--primary-color);">*</span></label>
+                            <input type="tel" id="telefono" name="telefono" placeholder="Ej. 55 1234 5678" pattern="[0-9]{10}" title="Por favor, introduce un número de 10 dígitos." required>
+                        </div>
+                        <div class="form-group">
+                            <label for="correo">Correo Electrónico <span style="color: var(--primary-color);">*</span></label>
+                            <input type="email" id="correo" name="correo" placeholder="Ej. correo@empresa.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="comentarios">Comentarios</label>
+                            <textarea id="comentarios" name="comentarios" placeholder="Cuéntanos más sobre tus necesidades o dudas."></textarea>
+                        </div>
+                        <input type="hidden" name="nombre_campania" value="prueba de modificación de audio vales de despensa">
+                        <button type="submit" class="btn-submit">Enviar Solicitud</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Efectivale. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.getElementById('contactForm');
+            const toast = document.getElementById('toast-notification');
+
+            form.addEventListener('submit', async (event) => {
+                event.preventDefault(); // Detener el envío por defecto del formulario
+
+                const data = new FormData(event.target);
+                const formDataObject = {};
+                data.forEach((value, key) => {
+                    formDataObject[key] = value;
+                });
+
+                try {
+                    const response = await fetch('/api/landing/contacto', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(formDataObject)
+                    });
+
+                    if (response.ok) {
+                        showToast('¡Gracias por tu interés! Nos pondremos en contacto contigo pronto.');
+                        event.target.reset(); // Limpiar el formulario
+                    } else {
+                        const errorData = await response.json();
+                        console.error('Error al enviar el formulario:', errorData);
+                        showToast('Hubo un problema al enviar tu solicitud. Inténtalo de nuevo más tarde.', true);
+                    }
+                } catch (error) {
+                    console.error('Error de red o del servidor:', error);
+                    showToast('Error de conexión. Por favor, verifica tu internet o inténtalo más tarde.', true);
+                }
+            });
+
+            function showToast(message, isError = false) {
+                toast.textContent = message;
+                toast.style.backgroundColor = isError ? 'firebrick' : 'var(--primary-color)';
+                toast.classList.add('show');
+                setTimeout(() => {
+                    toast.classList.remove('show');
+                }, 5000); // El toast desaparece después de 5 segundos
+            }
+        });
+    </script>
+</body>
+</html>
